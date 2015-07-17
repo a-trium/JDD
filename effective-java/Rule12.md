@@ -1,5 +1,11 @@
+<<<<<<< HEAD
+규칙 12 Comparable구현을 고려하라
+
+compareTo 메서드는 Object에 선언되어있지 않다.
+=======
 #규칙 12 Comparable구현을 고려하라
 comopareTo 메서드는 Object에 선언되어있지 않다.
+>>>>>>> 293dcec52e93cf3dd7ff9813f3a8daa88c78b4db
 이 메서드는 Comparable인터페이스에 포함된 유일한 메서드이다.
 Comparable 인터페이스를 구현하는 클래스의 객체들은 자연적순서(naturla ordering)를 갖게된다.
 Comparable을 구현한 객체들의 배열을 정렬하는 것 : Arrays.sort(a);
@@ -14,7 +20,7 @@ public WordList {
 	}
 }
 
-자바 플랫폼 라이브러리이ㅔ 포함된 거의 모든값 클래스(value class)는 Comparable인터페이스를 구현
+자바 플랫폼 라이브러리에 포함된 거의 모든값 클래스(value class)는 Comparable인터페이스를 구현
 compareTo메서드의 일반규칙은 equals와 비슷
 
 + compareTo를 구현하는 경우
