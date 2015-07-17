@@ -1,4 +1,4 @@
-규칙 12 Comparable구현을 고려하라
+#규칙 12 Comparable구현을 고려하라
 comopareTo 메서드는 Object에 선언되어있지 않다.
 이 메서드는 Comparable인터페이스에 포함된 유일한 메서드이다.
 Comparable 인터페이스를 구현하는 클래스의 객체들은 자연적순서(naturla ordering)를 갖게된다.
