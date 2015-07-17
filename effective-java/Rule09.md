@@ -34,9 +34,9 @@ public int hashCode() { return 42; }
     - 필드가 `byte`, `char`, `short`, `int`중 하나  ->   `(int) f`계산
     - 필드가 `long`    ->  `(int)(f^(f>>>32))`를 계산
     - 필드가 `float`   ->  `Float.floatToIntBits(f)`
-    - 필드가 'double'  ->  `Double.doubleToLongBits(f)를 계산하고, 그 결과로 얻은 `long`값을 3번째 `long`절차에 따라 진행`
+    - 필드가 `double`  ->  `Double.doubleToLongBits(f)`를 계산하고, 그 결과로 얻은 `long`값을 위에 `long`절차에 따라 진행
     - 필드가 `객체 참조`이고 `equals`메서드가 해당 필드의 `equals`메서드를 재귀적으로 호출하는 경우  ->  해당 필드의 `hashCode`메서드를 재귀적으로 호출하여 해시코드 계산  
-    복잡한 비교가 필요한 경우, 해당 필드의 **대표 형태(canoical representation)** 를 계사한 다음, 대표 형태에 대해 `hashCode`를 호출
+    복잡한 비교가 필요한 경우, 해당 필드의 **대표 형태(canoical representation)** 를 계산한 다음, 대표 형태에 대해 `hashCode`를 호출
     - 필드가 `array`   ->  각 원소가 별도 필드인 것처럼 계산  
   - B. A에서 계산된 해시 코드 `c`를 `result`에서 다음과 같이 결합
 ```java

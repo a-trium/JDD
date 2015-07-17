@@ -5,7 +5,7 @@
 - 각각의 객체가 고유하다  
 - 클래스에 **논리적 동일성(logical equality)** 검사 방법이 있건 없건 상관없다  
 - 상위 클래스에서 재정의한 `equals`가 하위 클래스에서 사용하기에도 적당하다  
-- 클래스가 `private`또는 `package-private`로 선언되었고, `equals`메서드를 호출할 일이 없다
+- 클래스가 `private`또는 `package-private`로 선언되었고, `equals`메서드를 호출 할 일이 없다
 </br>
 
 `Object.equals`의 재정의가 필요할때는?
@@ -18,7 +18,7 @@
 </br>
 
 `equals` 메서드의 **동치 관계(equivalence relation) 규칙**
-- 반사성(reflexive): null이 아닌 참조x가 있을떄, x.equals(x)는 true를 반환
+- 반사성(reflexive): null이 아닌 참조x가 있을때, x.equals(x)는 true를 반환
 - 대칭성(symmetric): null이 아닌 참조 x와 y가 있을때, x.equals(y)는 y.equals(x)가 true일때만 true반환
 - 추이성(transitive): null이 아닌 참조 x,y,z가 있을때, x.equals(y)가 true이고 y.equals(z)가 true이면, x.equals(z)도 true
 - 일관성(consistent): null이 아닌 참조 x와 y가 있을떄, equals를 통해 비교되는 정보에 아무 변화가 없다면, x.equals(y) 호출 결과는 호출 횟수에 상관없이 항상 같아야 함
@@ -32,7 +32,7 @@
 2. `instanceof` 연사자를 사용하여 인자의 자료형이 정확한지 검사
 3. `equals`의 인자를 정확한 자료형으로 변환
 4. **중요** 필드 각각이 인자로 주어진 객체의 해당 필드와 일치하는지 검사
-5. `equals` 메서드 구현을 끝냈다면, 대칭성/추이성/일관성 세 속서잉 만족되는 검토
+5. `equals` 메서드 구현을 끝냈다면, 대칭성/추이성/일관성 3가지 속성이 만족되는 검토
 </br>
 
 `equals`를 구현할때 주의해야 할 사항(추가)
