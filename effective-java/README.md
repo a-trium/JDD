@@ -32,4 +32,15 @@
 - [Rule 22](https://github.com/SKP4/JDD/blob/master/effective-java/Rule22.md) 멤버 클래스는 가능하면 static으로 선언하라
 
 ## Chapter 5
+
+- [Rule 23](https://github.com/SKP4/JDD/blob/master/effective-java/Rule23.md) 새 코드에는 무인자 제네릭 자료형을 사용하지 마라
+- [Rule 24](https://github.com/SKP4/JDD/blob/master/effective-java/Rule24.md) 무점검 경고(unchcked warning)를 제거하라
+- [Rule 25](https://github.com/SKP4/JDD/blob/master/effective-java/Rule25.md) 배열 대신 리스트를 써라
+- [Rule 26](https://github.com/SKP4/JDD/blob/master/effective-java/Rule26.md) 가능하면 제네릭 자료형으로 만들 것
+- [Rule 27](https://github.com/SKP4/JDD/blob/master/effective-java/Rule27.md) 가능하면 제네릭 메서드로 만들 것
+- [Rule 28](https://github.com/SKP4/JDD/blob/master/effective-java/Rule28.md) 한정적 와일드카드를 써서 API 유연성을 높여라
+- [Rule 29](https://github.com/SKP4/JDD/blob/master/effective-java/Rule29.md) 형 안전 다형성 컨테이너를 쓰면 어떨지 따져보라
+
+## Chapter 5
+
 ... Coming soon!
