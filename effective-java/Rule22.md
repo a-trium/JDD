@@ -10,7 +10,7 @@
 #### 정적 멤버 클래스(static member class)
 가장 간단한 중첩 클래스, 바깥 클래스의 `private`포함 모든 멤버에 접근할 수 있다.  
 바깥 클래스의 정적 멤버이며, 다른 정적 필드와 동일한 접근권한 규칙을 따른다.  
-`예` : public 도움 클래스(helper class)
+`예` public 도움 클래스(helper class)
 
 </br>
 #### 비 정적 멤버 클래스(nonstatic member class)
