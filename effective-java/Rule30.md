@@ -25,6 +25,7 @@
 9. `Comparable` `Serializable` 인터페이스가 구현되어 있다
 
 `예제`
+
 ```java
 public enum Planet {
     MERCURY (3.302e+23, 2.439e6),
