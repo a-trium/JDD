@@ -57,6 +57,8 @@ interface Function {
 
 동기화 영역 안에서 *alien method* 를 호출하면 안되므로, *lock* 을 건 상태에서 리스트를 복사한 다음, 복사본에 작업하도록 `reduce` 메소드를 변경하자.
 
+> alien method: A method you call for which you have no control over the code and further don’t even know what the code does, other than the method signature. Most commonly, the term is used for delegate methods, but strictly speaking it could refer to calls to third party libraries. The term was coined by Joshua J. Bloch.
+
 
 ```java
 static Object reduce(List list, Function f, Object initVal) {
