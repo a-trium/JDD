@@ -41,6 +41,15 @@
 - [Rule 28](https://github.com/SKP4/JDD/blob/master/effective-java/Rule28.md) 한정적 와일드카드를 써서 API 유연성을 높여라
 - [Rule 29](https://github.com/SKP4/JDD/blob/master/effective-java/Rule29.md) 형 안전 다형성 컨테이너를 쓰면 어떨지 따져보라
 
-## Chapter 5
+## Chapter 6
+
+- [Rule 30](https://github.com/SKP4/JDD/blob/master/effective-java/Rule30.md) int 상수대신 enum을 사용하라
+- [Rule 31](https://github.com/SKP4/JDD/blob/master/effective-java/Rule31.md) ordinal 대신 객체 필드를 사용하라
+- [Rule 32](https://github.com/SKP4/JDD/blob/master/effective-java/Rule32.md) 비트 필드(bit field)대신 EnumSet을 사용하라
+- [Rule 33](https://github.com/SKP4/JDD/blob/master/effective-java/Rule33.md) ordinal을 배열 첨자로 사용하는 대신 EnumMap을 이용하라
+- [Rule 34](https://github.com/SKP4/JDD/blob/master/effective-java/Rule34.md) 확장 가능한 enum을 만들어야 한다면 인터페이스를 이용하라
+- [Rule 35](https://github.com/SKP4/JDD/blob/master/effective-java/Rule35.md) 작명 패턴 대신 어노테이션을 사용하라
+- [Rule 36](https://github.com/SKP4/JDD/blob/master/effective-java/Rule36.md) Override 어노테이션은 일관되게 사용하라
+- [Rule 37](https://github.com/SKP4/JDD/blob/master/effective-java/Rule37.md) 자료형을 정의할 때 표식 인터페이스를 사용하라
 
 ... Coming soon!
