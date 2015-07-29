@@ -11,11 +11,11 @@ public enum Ensemble{
 }
 ```
 
-- 상수의 순서를 변경하는 순간 `numberOfMusicians`메서드는 깨지게 된다
+- 상수의 순서를 변경하는 순간 `numberOfMusicians 메서드`는 깨지게 된다
 - 이미 사용한 정수값에 대응되는 새로운 `enum` 상수를 정의할 수 없다
 - 새로운 상수는 무조건 이전 상수값보다 1만큼 커야 된다
 
->원칙은, enum상수에 연계되는 값을 ordinal을 사용해 표현하지 말라는 것이다. 그런 값이 필요하다면 그 대신 객체필드(instance field)에 저장해야 한다.
+>원칙은, enum상수에 연계되는 값을 ordinal을 사용해 표현하면 안된다. 필요하다면 객체필드(instance field)에 저장해야 한다.
 
 ```java
 public enum Ensemble{

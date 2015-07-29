@@ -2,15 +2,15 @@
 
 ## int 상수의 문제점
 1. 오렌지를 기대하는 메서드에 사과를 넘겨도 컴파일러가 에러를 내지 않는다
-2. int enum 그룹별로 `namespace`를 제공하지 않기 때문에, 이름이 충돌할 수 있다
+2. `int enum` 그룹별로 `namespace`를 제공하지 않기 때문에, 이름이 충돌할 수 있다
 3. 컴파일 시점 상수이기 때문에, 값이 변경되면 클라이언트도 다시 컴파일 해야 한다
-4. int enum상수를 문자열로 변환하기 쉽지 않아, 디버거로 확인해도 숫자만 보인다
+4. `int enum`상수를 문자열로 변환하기 쉽지 않아, 디버거로 확인해도 숫자만 보인다
 
 
 ## String 상수의 문제점
 1. 상수 이름을 화면에 출력할 수 있지만, 상수 비교시 문자열 비교해야 하므로 성능이슈가 생긴다
 2. 프로그래머가 필드 이름 대신 하드코딩된 문자열 상수를 클라이언트 코드에 박아둘 수 있다
-3. int상수보다 더 나쁜 패턴이다
+3. `int상수`보다 더 나쁜 패턴이다
 
 
 ## java enum의 장점
@@ -55,9 +55,10 @@ public enum Planet {
 }
 ```
 
-- enum에 상수 데이터를 넣으려면 `instance field`를 선언하고 생성자를 통해 필드를 초기화 한다.
+- `enum`에 상수 데이터를 넣으려면 `instance field`를 선언하고 생성자를 통해 필드를 초기화 한다.
 - 클라이언트에게 공유할 필요가 없다면 `private`, `package-private`으로 선언
-- switch문을 사용하기 보다는, `absctract 메서드`를 선언하고, ***각 상수별 클래스 몸체*** 안에서 실제 메서드로 재정의해라 (아래 예제 참고)
+- `switch`를 사용하기 보다는, `absctract 메서드`를 선언하고, ***각 상수별 클래스 몸체*** 안에서 실제 메서드로 재정의해라 (아래 예제 참고)
+
 `예제`
 ```java
 // 방법 1
@@ -82,7 +83,8 @@ public enum Operation{
 }
 ```
 
-여러 enum 상수끼리 공유하는 코드를 만들때 위 방법으로 해결하기 어렵다. 이럴때는 다음과 같이 private으로 선언된 중첩 enum을 만든다.
+여러 `enum 상수`끼리 공유하는 코드를 만들때 위 방법으로 해결하기 어렵다. 이럴때는 다음과 같이 `private`으로 선언된 `중첩 enum`을 만든다.
+
 ```java
 public enum PayrollDay{
     MONDAY(PayType.WEEKDAY), TUESDAY(PayType.WEEKDAY), WEDNESDAY(PayType.WEEKDAY), THURSDAY(PayType.WEEKDAY), FRIDAY(PayType.WEEKDAY), SATURDAY(PayType.WEEKEND), SUNDAY(PayType.WEEKEND);
