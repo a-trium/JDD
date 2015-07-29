@@ -3,7 +3,7 @@
 
 - 함수 호출 시 함수 형식에 맞지 않게 인자를 넘겨도 에러발생 안함
 - 아래의 예 : 정의된 함수의 인자보다 적거나 많은 인자로 함수를 호출
-
+```javascript
 function func(arg1, arg2){
 
 	console.log(arg1, arg2);
@@ -17,7 +17,7 @@ func(1);//1 undefined
 func(1,2);//1 2
 
 func(1,2,3);//1 2
-
+```
 - 넘겨지지않은 인자 : undefined
 - 초과된 인자 :  무시됨
 
