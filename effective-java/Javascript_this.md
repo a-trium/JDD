@@ -5,11 +5,17 @@
 - 아래의 예 : 정의된 함수의 인자보다 적거나 많은 인자로 함수를 호출
 
 function func(arg1, arg2){
+
 	console.log(arg1, arg2);
+	
 }
+
 func();//undefined undefined
+
 func(1);//1 undefined
+
 func(1,2);//1 2
+
 func(1,2,3);//1 2
 
 - 넘겨지지않은 인자 : undefined
@@ -23,11 +29,16 @@ func(1,2,3);//1 2
 - 유사배열객체에서 배열메서드를 사용하는 방법 -> "call"과 "apply"메서드를 이용한 명시적인 this 바인딩
 
 function add(a,b){
+
 	console.dir(arguments);
+	
 	return a+b;
+	
 }
 console.log(add(1));//NaN
+
 console.log(add(1,2));//3
+
 console.log(add(1,2,3));//3
 
 - Arguments객체의 3가지 요소
@@ -38,14 +49,22 @@ console.log(add(1,2,3));//3
 - Arguments객체는 매개변수 개수가 정확하게 정해지지 않은 함수를 구현하거나, 전달된 인자에 따라 다른 처리 해줄 때 유용
 
 function sum(){
+
 	var result = 0;
+	
 
 	for(var i=0; i<arguments.length; i++){
+	
 		result+=arguments[i];
+		
 	}
+	
 	return result;
+	
 }
+
 console.log(sum(1,2,3));//6
+
 console.log(sum(1,2,3,4,5,6,7,8,9));//45
 
 4.4.2 함수호출 패턴과 this바인딩
@@ -56,17 +75,28 @@ console.log(sum(1,2,3,4,5,6,7,8,9));//45
 - 메서드를 호출할 때, 메서드 내부 코드에서 사용한 this는 해당 메서드를 호출한 객체로 바인딩 됨
 
 var myObject = {
+
 	name : 'foo',
+	
 	sayName : function(){
+	
 		console.log(this.name);
+		
 	}
+	
 };
 var otherObject = {
+
 	name : 'bar'
+	
 }
+
 otherObject.sayName = myObject.sayName;
+
 myObject.sayName();//foo
+
 otherObject.sayName();//bar
+
 
 myObject객체에서 sayName()호출 시, this는 myObject객체 가리키고,
 otherObject객체에서 sayName()호출 시, this는 otherObject객체 가리킴
@@ -80,16 +110,25 @@ otherObject객체에서 sayName()호출 시, this는 otherObject객체 가리킴
 - 자바스크립트의 모든 전역변수는 이러한 전역 객체의 프로퍼티들
 
 var foo = "I'm foo";
+
 console.log(foo);//I'm foo
+
 console.log(window.foo);//I'm foo
 
+
 var test = "This if test";
+
 console.log(window.test);//This is test
 
+
 var sayFoo = function(){
+
 	console.log(this.test);//This is test
+	
 };
+
 sayFoo();
+
 
 - 자바스크립트의 모든 전역변수는 전역객체의 프로퍼티들
 - 전역변수는 전역객체(window)의 프로퍼티로도 접근할 수 있음
@@ -98,28 +137,48 @@ sayFoo();
 - this.test는 window.test
 
 //전역변수 value
+
 var value = 100;
+
 //myObject객체 생성
+
 var myObject = {
+
 	value: 1,
+	
 	func1: function(){
+	
 		this.value += 1;
+		
 		console.log('func1() called. this.value : ' + this.value);
+		
 
 		//func2()내부함수
+		
 		func2 = function(){
+		
 			this.value +=1;
+			
 			console.log('func2() called. this.value : ' + this.value);
 
 			func3 = function(){
+			
 				this.value += 1;
+				
 				console.log('func3() called. this.value : ' + this.value);
+				
 			}
+			
 			func3();//func3()내부 함수 호출
+			
 		}
+		
 		func2();//func2()내부 함수 호출
+		
 	}
+	
 };
+
 myObject.func1();
 
 //func1()메서드의 호출 -> func2()내부 함수 호출 -> func3()내부 함수 호출
@@ -143,29 +202,51 @@ func3() called - this.value : 102;//window.value에 1더한 값
 + 보통, this값을 저장하는 변수의 이름을 that이라고 지음
 
 //전역변수 value
+
 var value = 100;
+
 //myObject객체 생성
+
 var myObject = {
+
 	value: 1,
+	
 	func1: function(){
+	
 		var that = this;
+		
 		this.value += 1;
+		
 		console.log('func1() called. this.value : ' + this.value);
+		
 
 		//func2()내부함수
+		
 		func2 = function(){
+		
 			that.value +=1;
+			
 			console.log('func2() called. this.value : ' + that.value);
+			
 
 			func3 = function(){
+			
 				that.value += 1;
+				
 				console.log('func3() called. this.value : ' + that.value);
+				
 			}
+			
 			func3();//func3()내부 함수 호출
+			
 		}
+		
 		func2();//func2()내부 함수 호출
+		
 	}
+	
 };
+
 myObject.func1();
 
 //출력결과
@@ -203,15 +284,25 @@ func3() called - this.value : 4;//부모함수인 func2()의 변수 that에 접�
 - 리턴값이 새로 생성한 객체가 아닌 다른 객체를 리턴하는 경우 : 생성자 함수를 호출했다고 하더라도, this 가 아닌 해당 객체가 리턴됨
 
 예제 4-28 생성자 함수의 동작방식 / Person이라는 생성자 함수를 통해 foo라는 객체 만드는 예제
+
 //Person() 생성자 함수
+
 var Person = function (name) {
+
 	//함수 코드 실행 전
+	
 	this.name = name;
+	
 	//함수 리턴
+	
 }
+
 //foo 객체 생성
+
 var foo = new Person('foo');//Person함수를 생성자로 호출
+
 console.log(foo.name);//(출력값)foo
+
 
 1. Person함수가 생성자로 호출되면, 함수 코드가 실행되기 전 빈 객체 생성됨
 2. 생성된 빈 객체는 Person()생성자 함수의 prototype프로퍼티가 가리키는 객체(Person.prototype객체)를 [[Prototype]]링크로 연결해서 자신의 프로토타입으로 설정
@@ -225,25 +316,39 @@ console.log(foo.name);//(출력값)foo
 + 차이가 발생하는 이유 : 자바스크립트에서 객체는 자신을 생성한 생성자 함수의 prototype프로퍼티가 가리키는 객체를 자신의 프로토타입 객체로 설정
 					객체리터럴 방식에서는 객체 생성자함수는 Object(), 생성자 함수 방식의 경우는 생성자 함수 자체.
 //객체 리터럴 방식으로 foo객체 생성
+
 var foo = {
+
 	name: 'foo',
+	
 	age: 35,
+	
 	gender: 'man'
+	
 };
+
 console.dir(foo);
 
 //생성자 함수
+
 function Person(name, age, gender){
+
 	this.name = name;
+	
 	this.age = age;
+	
 	this.gender = gender;
+	
 }
 
 //Person생성자 함수를 이용해 bar객체, baz객체 생성
+
 var bar = new Person('bar', 25, 'woman');
+
 console.dir(bar);
 
 var baz = new Person('baz', 17, 'woman');
+
 console.dir(baz);
 
 +생성자 함수를 new를 붙이지 않고 호출할 경우:
@@ -254,17 +359,25 @@ console.dir(baz);
 - 생성자 함수 호출의 경우 : this 는 새로 생성되는 빈 객체에 바인딩
 
 function Person(name, age, gender){
+
 	this.name = name;
+	
 	this.age = age;
+	
 	this.gender = gender;
+	
 }
 
 var qux = Person('qux', 20, 'man');
+
 console.log(qux);//undefined
 
 console.log(window.name);//qux
+
 console.log(window.age);//20
+
 console.log(window.gender);//man
+
 
 - Person()을 new 없이 일반 함수 형태로 호출 할 경우, this 는 함수 호출이므로 전역객체인 window 객체로 바인딩 됨
 - 이 코드는 Person객체를 생성해서 이를 qux변수에 저장하려는 원래 의도와 달리, this 가 바인딩 된 window객체에 동적으로 name, age, gender프로퍼티가 생성된 것
