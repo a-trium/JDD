@@ -1,4 +1,4 @@
-# Rule 34 - 작명패턴 대신 어노테이션을 사용하자
+# Rule 35 - 작명패턴 대신 어노테이션을 사용하자
 
 ## Built-in Java Annotations
 
