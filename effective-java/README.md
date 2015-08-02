@@ -52,4 +52,13 @@
 - [Rule 36](https://github.com/SKP4/JDD/blob/master/effective-java/Rule36.md) Override 어노테이션은 일관되게 사용하라
 - [Rule 37](https://github.com/SKP4/JDD/blob/master/effective-java/Rule37.md) 자료형을 정의할 때 표식 인터페이스를 사용하라
 
+## Chapter 7
+- [Rule 30](https://github.com/SKP4/JDD/blob/master/effective-java/Rule30.md) 
+- [Rule 30](https://github.com/SKP4/JDD/blob/master/effective-java/Rule30.md) 
+- [Rule 30](https://github.com/SKP4/JDD/blob/master/effective-java/Rule30.md)
+- [Rule 40](https://github.com/SKP4/JDD/blob/master/effective-java/Rule40.md) 
+- [Rule 40](https://github.com/SKP4/JDD/blob/master/effective-java/Rule40.md) 
+- [Rule 40](https://github.com/SKP4/JDD/blob/master/effective-java/Rule40.md) 
+- [Rule 40](https://github.com/SKP4/JDD/blob/master/effective-java/Rule40.md) 
+
 ... Coming soon!
