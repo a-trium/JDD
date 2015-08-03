@@ -27,7 +27,7 @@ public class CollectionClassifier {
 ```
 
 Set, List, Unknown Collection을 순서대로 출력할것 같지만, Unknown Collection만 세번 호출한다.
-오버로딩 된 메서드는 컴파일 시점에 호출이 결정되기 떄문에, 컴파일 시점에 자료형이 `Collection<?>`으로 동일하기 때문이다.
+오버로딩 된 메서드는 컴파일 시점에 호출이 결정되기 때문에, 컴파일 시점에 자료형이 `Collection<?>`으로 동일하기 때문이다.
 때문에 아래와 같이 해야한다.
 
 ```java
