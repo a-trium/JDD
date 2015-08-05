@@ -1,4 +1,4 @@
-pply메서드를 이용한 명시적 this바인딩
+#apply메서드를 이용한 명시적 this바인딩
 call과 apply : this를 특정객체에 명시적으로 바인딩
 모든 함수의 부모객체인 Function.prototype객체의 메서드
 다음의 형식으로 apply()메서드 호출하는 것이 가능
@@ -17,7 +17,7 @@ argArray :
 
 apply()메서드 :
 두번째 인자인 argArray배열을 자신을 호출한 함수의 인자로 사용하되, 이 내부에서 사용된 this는 첫번째 인자인 thisArg로 바인딩해서 함수를 호출
-
+**javascript
 //생성자 함수
 function Person(name, age, gender){
 	this.name = name;
@@ -33,7 +33,7 @@ console.dir(foo);
 // 첫번째 인자로 넘긴 foo가 Person()함수에서 this로 바인딩
 // apply메서드의 두번째인자로 넘긴 배열['foo', 30, 'man']은 Person()함수의 인자로 넘겨짐
 // 결국 Person('foo', 30, 'man')함수를 호출하면서, this를 foo객체에 명시적으로 바인딩
-
+**
 call()메서드 :
 apply()메서드와 기능 같지만, 두번째 인자에서 배열로 넘긴 것을 각각 하나의 인자로 넘김
 
