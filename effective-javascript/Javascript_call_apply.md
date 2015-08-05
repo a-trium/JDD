@@ -24,6 +24,7 @@ function Person(name, age, gender){
 	this.age = age;
 	this.gender = gender;
 }
+Person.prototype.a = function(){console.log(a);};
 //foo빈객체 생성
 var foo = {};
 
