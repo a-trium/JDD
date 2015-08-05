@@ -7,7 +7,9 @@
 
 >호출자(caller)측에서 복구할것으로 여겨지는 상황에 대해서는 checked exception을 이용해야한다
 
-`checked exception` 던지는 메서드를 호출한 클라이언트는 해당 예외를 `catch`절 안에서, 혹은 밖으로 던져지도록 놔두든지 해야 한다. API사용자에게 `checked exception` 예외를 준다는 것은, 해당 상태를 복구할 권한을 준다는 뜻이다.
+`checked exception` 던지는 메서드를 호출한 클라이언트는 해당 예외를 `catch`절 안에서, 혹은 밖으로 던져지도록 놔두든지 해야 한다.  
+
+**API사용자에게 `checked exception` 예외를 준다는 것은, 해당 상태를 복구할 권한을 준다는 뜻이다.**
 
 
 **복구가능 상태** : checked exception  
