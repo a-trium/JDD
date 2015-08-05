@@ -21,7 +21,7 @@ Date end = new Date();
 
 Period p = new Period(start, end);
 end.setYear(78); // p 의 내부를 변경
-``
+```
 
 ## 생성자 인자를 사용한 공격을 방어하는 예제
 
