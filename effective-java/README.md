@@ -74,4 +74,14 @@
 - [Rule 64](https://github.com/SKP4/JDD/blob/master/effective-java/Rule64.md) 실패 원자성 달성을 위해 노력하라
 - [Rule 65](https://github.com/SKP4/JDD/blob/master/effective-java/Rule65.md) 예외를 무시하지 마라
 
+## Chapter 10.  병행성
+- [Rule 66](https://github.com/SKP4/JDD/blob/master/effective-java/Rule66.md) 변경 가능 공유 데이터에 대한 접근은 동기화하라
+- [Rule 67](https://github.com/SKP4/JDD/blob/master/effective-java/Rule67.md) 과도한 동기화는 피하라
+- [Rule 68](https://github.com/SKP4/JDD/blob/master/effective-java/Rule68.md) 스레드보다는 시행자와 태스크를 이용하라
+- [Rule 69](https://github.com/SKP4/JDD/blob/master/effective-java/Rule69.md) wait나 notify 대신 병행성 유틸리티를 이용하라
+- [Rule 70](https://github.com/SKP4/JDD/blob/master/effective-java/Rule70.md) 스레드 안전성에 대해 문서로 남겨라
+- [Rule 71](https://github.com/SKP4/JDD/blob/master/effective-java/Rule71.md) 초기화 지연은 신중하게 하라
+- [Rule 72](https://github.com/SKP4/JDD/blob/master/effective-java/Rule72.md) 스레드 스케줄러에 의존하지 마라
+- [Rule 73](https://github.com/SKP4/JDD/blob/master/effective-java/Rule73.md) 스레드 그룹은 피하라
+
 ... Coming soon!
