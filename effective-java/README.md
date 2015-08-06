@@ -62,6 +62,16 @@
 - [Rule 43](https://github.com/SKP4/JDD/blob/master/effective-java/Rule43.md) null 대신 빈 배열이나 컬렉션을 반환하라
 - [Rule 44](https://github.com/SKP4/JDD/blob/master/effective-java/Rule44.md) 모든 API 요소에 문서화 주석을 달라
 
-## Chapter 8.  일반적인 프로그래밍 원칙들
+## Chapter 9.  예외
+
+- [Rule 57](https://github.com/SKP4/JDD/blob/master/effective-java/Rule57.md) 예외는 예외적 상황에만 사용하라
+- [Rule 58](https://github.com/SKP4/JDD/blob/master/effective-java/Rule58.md) 복구 가능 상태에는 점검지정 예외를 사용하고, 프로그래밍 오류에는 실행시점 예외를 이용하라
+- [Rule 59](https://github.com/SKP4/JDD/blob/master/effective-java/Rule59.md) 불필요한 점검지정 예외 사용은 피하라
+- [Rule 60](https://github.com/SKP4/JDD/blob/master/effective-java/Rule60.md) 표준 예외를 사용하라
+- [Rule 61](https://github.com/SKP4/JDD/blob/master/effective-java/Rule61.md) 추상화 수준에 맞는 예외를 던져라
+- [Rule 62](https://github.com/SKP4/JDD/blob/master/effective-java/Rule62.md) 메서드에서 던져지는 모든 예외에 대해 문서를 남겨라
+- [Rule 63](https://github.com/SKP4/JDD/blob/master/effective-java/Rule63.md) 어떤 오류인지를 드러내는 정보를 상세한 메시지에 담으라
+- [Rule 64](https://github.com/SKP4/JDD/blob/master/effective-java/Rule64.md) 실패 원자성 달성을 위해 노력하라
+- [Rule 65](https://github.com/SKP4/JDD/blob/master/effective-java/Rule65.md) 예외를 무시하지 마라
 
 ... Coming soon!
