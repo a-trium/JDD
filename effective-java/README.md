@@ -62,6 +62,26 @@
 - [Rule 43](https://github.com/SKP4/JDD/blob/master/effective-java/Rule43.md) null 대신 빈 배열이나 컬렉션을 반환하라
 - [Rule 44](https://github.com/SKP4/JDD/blob/master/effective-java/Rule44.md) 모든 API 요소에 문서화 주석을 달라
 
-## Chapter 8.  일반적인 프로그래밍 원칙들
+## Chapter 9.  예외
+
+- [Rule 57](https://github.com/SKP4/JDD/blob/master/effective-java/Rule57.md) 예외는 예외적 상황에만 사용하라
+- [Rule 58](https://github.com/SKP4/JDD/blob/master/effective-java/Rule58.md) 복구 가능 상태에는 점검지정 예외를 사용하고, 프로그래밍 오류에는 실행시점 예외를 이용하라
+- [Rule 59](https://github.com/SKP4/JDD/blob/master/effective-java/Rule59.md) 불필요한 점검지정 예외 사용은 피하라
+- [Rule 60](https://github.com/SKP4/JDD/blob/master/effective-java/Rule60.md) 표준 예외를 사용하라
+- [Rule 61](https://github.com/SKP4/JDD/blob/master/effective-java/Rule61.md) 추상화 수준에 맞는 예외를 던져라
+- [Rule 62](https://github.com/SKP4/JDD/blob/master/effective-java/Rule62.md) 메서드에서 던져지는 모든 예외에 대해 문서를 남겨라
+- [Rule 63](https://github.com/SKP4/JDD/blob/master/effective-java/Rule63.md) 어떤 오류인지를 드러내는 정보를 상세한 메시지에 담으라
+- [Rule 64](https://github.com/SKP4/JDD/blob/master/effective-java/Rule64.md) 실패 원자성 달성을 위해 노력하라
+- [Rule 65](https://github.com/SKP4/JDD/blob/master/effective-java/Rule65.md) 예외를 무시하지 마라
+
+## Chapter 10.  병행성
+- [Rule 66](https://github.com/SKP4/JDD/blob/master/effective-java/Rule66.md) 변경 가능 공유 데이터에 대한 접근은 동기화하라
+- [Rule 67](https://github.com/SKP4/JDD/blob/master/effective-java/Rule67.md) 과도한 동기화는 피하라
+- [Rule 68](https://github.com/SKP4/JDD/blob/master/effective-java/Rule68.md) 스레드보다는 시행자와 태스크를 이용하라
+- [Rule 69](https://github.com/SKP4/JDD/blob/master/effective-java/Rule69.md) wait나 notify 대신 병행성 유틸리티를 이용하라
+- [Rule 70](https://github.com/SKP4/JDD/blob/master/effective-java/Rule70.md) 스레드 안전성에 대해 문서로 남겨라
+- [Rule 71](https://github.com/SKP4/JDD/blob/master/effective-java/Rule71.md) 초기화 지연은 신중하게 하라
+- [Rule 72](https://github.com/SKP4/JDD/blob/master/effective-java/Rule72.md) 스레드 스케줄러에 의존하지 마라
+- [Rule 73](https://github.com/SKP4/JDD/blob/master/effective-java/Rule73.md) 스레드 그룹은 피하라
 
 ... Coming soon!

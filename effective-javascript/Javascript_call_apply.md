@@ -24,6 +24,7 @@ function Person(name, age, gender){
 	this.age = age;
 	this.gender = gender;
 }
+Person.prototype.a = function(){console.log(a);};
 //foo빈객체 생성
 var foo = {};
 
@@ -65,6 +66,8 @@ myFunction(1,2,3);
 //console.dir(args)의 결과는 Array[3]
 //args는 배열이므로 프로토타입이 Array.prototype
 ```
+https://msdn.microsoft.com/ko-kr/library/4zc42wh1(v=vs.94).aspx
+
 #4.4.3함수 리턴
 자바스크립트 함수는 항상 리턴값을 반환함(return문을 사용하지 않더라도)
 
