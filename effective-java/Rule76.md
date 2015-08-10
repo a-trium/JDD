@@ -23,6 +23,7 @@ public final class Period{
 ```
 
 위 클래스를 직렬화 가능 클래스로 만드는데 문제점
+
 1. readObject 메서드가 `public 생성자`나 마찬가지
 2. 생성자와 마찬가지로 인자의 유효성 검사 필요
 3. 필요하다면 인자를 방어적으로 복사해야함
@@ -132,12 +133,14 @@ private void readobject(ObjectInputStream s) throws IOException, ClassNotFoundEx
 ```
 
 위의 코드는 다음 두가지 사항을 따르고 있다.
+
 1. 유효성 검사 이전에 방어적 복사를 시행하며, `clone`메서드를 사용하지 않는다
 2. `final`로 선언된 필드는 방어적 복사를 할 수 없다 -> `final`키워드를 사용하면 안된다
 
 릴리즈 `1.4` 이후로는 방어적 복사를 하지 않아도 악의적 객체 참조 공격을 막도록 고안된 `writeUnshared`와 `readUnshared`메서드가 `ObjectOutputStream`에 추가되었다. 하지만 규칙77에서 설명할 `ElvisStealer`공격에 취약하므로 사용하지 마라.
 
 안전한 `readObject` 메서드를 구현하고자 할떄 따라야 하는 지침들
+
 1. private로 남아있어야 하는 객체 참조 필드를 가진 클래스는 그런 필드가 가리키는 객체를 방어적으로 복사해야 한다. 변경 불가능 클래스의 변경 가능 컴포넌트가 이 범주에 해당한다.
 2. 불변식을 검사해서 위반된 사실이 감지될 경우 InvalidObjectException을 던져라. 불변식 검사는 방어적 복사 이후에 시행해야 한다.
 3. 만일 객체를 완전히 역직렬화 한 다음에 전체 객체 그래프의 유효성을 검사해야 한다면, ObjectInputValidation 인터페이스를 이용하라
