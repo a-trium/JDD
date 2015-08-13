@@ -84,4 +84,10 @@
 - [Rule 72](https://github.com/SKP4/JDD/blob/master/effective-java/Rule72.md) 스레드 스케줄러에 의존하지 마라
 - [Rule 73](https://github.com/SKP4/JDD/blob/master/effective-java/Rule73.md) 스레드 그룹은 피하라
 
-... Coming soon!
+## Chapter 11.  직렬화
+
+- [Rule 74](https://github.com/SKP4/JDD/blob/master/effective-java/Rule74.md) Serializable 인터페이스를 구현하라
+- [Rule 75](https://github.com/SKP4/JDD/blob/master/effective-java/Rule75.md) 사용자 지정 직렬화 형식을 사용하면 어떨지 따져보라
+- [Rule 76](https://github.com/SKP4/JDD/blob/master/effective-java/Rule76.md) readObject 메서드는 방어적으로 구현하라
+- [Rule 77](https://github.com/SKP4/JDD/blob/master/effective-java/Rule77.md) 개체통제가 필요하다면 readResolver 대신 enum 을 이용하라
+- [Rule 78](https://github.com/SKP4/JDD/blob/master/effective-java/Rule78.md) 직렬화된 객체 대신 직렬화 프락시를 고려하라
