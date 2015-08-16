@@ -17,6 +17,7 @@ shell 에서 'scala' 입력하여 실행
 ## Google Drive 공유권한 이메일 리스트 추출
 공유창에서 전체 리스트를 복사
 scala shell 에 :pa 를 입력하고, 뉴라인을 포함하여 붙여넣는다.
+```scala
 val k = """[붙여넣은 데이터-SKP Sentinel님(나)
 sentinelskp@gmail.com
 소유자	
@@ -25,7 +26,7 @@ neinasdfuj@gmail.com
 수정 가능 	
 Justin Lee
 imjasdfuni@gmail.com]"""  
-
+```
 (앞에 val k = 을 사용하지 않아도 자동으로 변수 이름이 붙여짐 res#)
 
 shell 에서 다단계로, 진행상태 확인 가능
