@@ -36,5 +36,27 @@ k.split("\n").filter(p=>p.contains("@"))
 
 k.split("\n").filter(p=>p.contains("@")).mkString(", ")
 
-마지막에 추출된 이메일 리스트를 새로운 문서에 추가하는데 사용
+마지막에 추출된 이메일 리스트를 새로운 문서에 추가하는데 사용함. 예제는 3개뿐이지만, 업무상 20+인 경우가 대부분이므로 아주 유용하게 사용중
 
+### Scala 변수선언의 종류, val과 var
+***val*** 은 re-assign이 불가능한 변수(immutable)를 선언하는데 사용되며, var이 꼭 필요한 극히 드문 경우를 제외하고 scala에서 애용되는 방식이다. 위의 예제에서 split, filter, mkString을 할때마다, 새로운 val 객체가 생성됨
+
+***var*** 은 자바와 마찬가지로 re-assgin이 가능하며, 작성자는 Map 데이터 정의에 사용해본 경험이 있다.
+
+### Scala Collecion function w/ lambda
+예제에 filter(p=>p.contains("@")) 에서 parameter로 사용된 lambda는 single statement 를 포함하고 있다. 
+(multiline 인 경우 아래와 같이 구현됨. scala 에서는 별도의 return 구문없이 가장 마지막에 위치한 것이 return 된다. 또한 입력되지 않은 변수 type에 대해 문맥을 판단해 자동으로 mapping 하여 준다. 아래의 p:String은 이를 명시해준 것)
+```scala
+k.split("\n").filter{p:String=> 
+//do something else
+p.contains("@")
+} 
+```
+collection function 의 경우 collection의 element를 하나씩 parameter lambda로 대입하여 실행시킨다. 여기서는 해당 string element에 "@"이 포함된 것인지를 나타내는 boolean 값이 return 되는데, filter 함수는 이 값이 true인 경우만 collection에 남겨둔다.
+다른 대표적인 함수로 map이 있는데 위의 예제와 동일한 lambda를 사용하여 shell에 입력해보자.
+```scala
+k.split("\n").map(p=>p.contains("@"))
+```
+shell에 나온 결과를 보면 알다시피,
+Array[String(type in original collection)]에서 Array[Boolean(Any u defined in lambda)]가 된다.
+(Any 는 Java 의 Object와 비슷한 아이다.)
