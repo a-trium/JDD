@@ -35,8 +35,8 @@ public class FunctionalInterfaces {
     }
 
     @FunctionalInterface
-    interface Suppiler<T> {
-        T supply();
+    interface Supplier<T> {
+        T get();
     }
 
     @FunctionalInterface
