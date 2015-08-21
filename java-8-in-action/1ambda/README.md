@@ -4,8 +4,8 @@
 
 ## Docs
 
-- [Chapter 3]()
-- [Chapter 4]()
+- [Chapter 3](https://github.com/SKP4/JDD/blob/master/java-8-in-action/1ambda/docs/Chapter3.md)
+- [Chapter 4](https://github.com/SKP4/JDD/blob/master/java-8-in-action/1ambda/docs/Chapter4.md)
 - [Chapter 5]()
 - [Chapter 6]()
 - [Chapter 7]()
