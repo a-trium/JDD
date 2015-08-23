@@ -7,6 +7,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import java.util.*;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 import static junit.framework.Assert.assertEquals;
@@ -185,6 +187,101 @@ public class Chapter5Spec {
             .stream()
             .min(Comparator.comparing(Transaction::getValue));
     }
+
+    @Test
+    public void test_unboxed() {
+        int calories = menu
+            .stream()
+            .map(Dish::getCalories)
+            .reduce(0, Integer::sum);
+
+        assertEquals(4200, calories);
+    }
+
+    @Test
+    public void test_without_boxing() {
+        int calories = menu
+            .stream()
+            .mapToInt(Dish::getCalories)
+            .sum();
+
+        assertEquals(4200, calories);
+    }
+
+    @Test
+    public void test_OptionalInt() {
+        OptionalInt maxCalories = new ArrayList<Dish>()
+            .stream()
+            .mapToInt(Dish::getCalories)
+            .max();
+
+        int max = maxCalories.orElse(1);
+
+        assertEquals(1, max);
+    }
+
+    @Test
+    public void test_rangeClosed() {
+        IntStream evens = IntStream
+            .rangeClosed(1, 10)
+            .filter(x -> x % 2 == 0);
+
+        assertEquals(5, evens.count());
+    }
+
+    @Test
+    public void test_pythgoreanTriples() {
+        Stream<int []> pythagoreanTriples = IntStream.rangeClosed(1, 100).boxed()
+            .flatMap(a ->
+                    IntStream.rangeClosed(1, 100)
+                             .mapToObj(b -> new int[]{a, b, (int) Math.sqrt(a * a + b * b)})
+                             .filter(t -> t[2] % 1 == 0)
+            );
+
+        pythagoreanTriples.limit(5)
+            .forEach(t -> System.out.println(t[0] + ", " + t[1] + ", " + t[2]));
+    }
+
+    @Test
+    public void test_generate_stream() {
+        Stream<String> s1 = Stream.of("1", "2");
+        Stream<String> s2 = Stream.empty();
+        int max = Arrays.stream(new int[]{1, 2, 3, 4}).max().orElse(1);
+    }
+
+    @Test
+    public void test_iterate() {
+        long count = Stream.iterate(0, n -> n + 2)
+                           .limit(10)
+                           .count();
+
+
+        assertEquals(10, count);
+
+        Stream.iterate(0, n -> n + 2)
+              .limit(2)
+              .forEach(System.out::println);
+    }
+
+    @Test
+    public void test_fibo() {
+        Stream<Integer> fiboGen = Stream
+            .iterate(new int[]{0, 1}, t -> new int[] {t[1], t[0] + t[1]})
+            .limit(5)
+            .map(t -> t[0]);
+
+        List<Integer> fibo = fiboGen.collect(toList());
+
+        assertEquals(Arrays.asList(0, 1, 1, 2, 3), fibo);
+    }
+
+    @Test
+    public void test_generate() {
+        Stream.generate(Math::random)
+            .limit(5)
+            .forEach(System.out::println);
+    }
+
 }
 
 
