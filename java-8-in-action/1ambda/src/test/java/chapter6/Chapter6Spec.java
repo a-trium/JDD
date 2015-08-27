@@ -11,6 +11,7 @@ import org.junit.runners.JUnit4;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.*;
 import static org.junit.Assert.assertEquals;
 
@@ -178,7 +179,108 @@ public class Chapter6Spec {
         Map<Dish.Type, Optional<Dish>> mostCaloricByType =
             menu.stream().collect(groupingBy(
                 Dish::getType,
-                maxBy(Comparator.comparingInt(Dish::getCalories))));
+                maxBy(comparingInt(Dish::getCalories))));
+    }
+
+    @Test
+    public void test_grouping_collectingAndThen() {
+        Map<Dish.Type, Dish> mostCaloricByType =
+            menu.stream()
+                .collect(groupingBy(Dish::getType,
+                    collectingAndThen(maxBy(comparingInt(Dish::getCalories)), Optional::get)));
+
+        System.out.println(mostCaloricByType);
+
+        assertEquals("pizza", mostCaloricByType.get(Dish.Type.OTHER).getName());
+    }
+
+    @Test
+    public void test_mapping() {
+        Map<Dish.Type, Set<CaloricLevel>> caloricLevelsByType =
+            menu.stream()
+                .collect(groupingBy(Dish::getType, mapping((Dish d) -> {
+                    if (d.getCalories() <= 400)
+                        return CaloricLevel.DIET;
+                    else if (d.getCalories() <= 700)
+                        return CaloricLevel.NORMAL;
+                    else
+                        return CaloricLevel.FAT;
+                }, toSet()))); // or toCollection(HashSet::new)
+
+        // output:
+        // {MEAT=[FAT, DIET, NORMAL], OTHER=[DIET, NORMAL], FISH=[DIET, NORMAL]}
+    }
+
+    @Test
+    public void test_partitioningBy1() {
+        Map<Boolean, Dish> mostCaloricPartitionedByVegetarian =
+            menu.stream()
+                .collect(partitioningBy(
+                    Dish::isVegetarian,
+                    collectingAndThen(maxBy(comparingInt(Dish::getCalories)), Optional::get)));
+
+        assertEquals("pork", mostCaloricPartitionedByVegetarian.get(false).getName());
+        assertEquals("pizza", mostCaloricPartitionedByVegetarian.get(true).getName());
+    }
+
+    @Test
+    public void test_prime_number() {
+        int n = 10; // 2, 3, 5, 7
+        Map<Boolean, List<Integer>> primes = PrimeNumber.partitionPrimes(10);
+
+        assertEquals(4, primes.get(true).size());  // 2, 3, 5, 7
+        assertEquals(5, primes.get(false).size()); // 4, 6, 8, 9, 10
+    }
+
+    @Test
+    public void test_custom_collector() {
+        // same as
+        // menu.stream().collect(toList());
+        List<Dish> dishes =
+            menu.stream()
+                .collect(new ToListCollector<Dish>());
+
+        assertEquals(9, dishes.size());
+    }
+
+    @Test
+    public void test_custom_collector2() {
+        List<Dish> dishes =
+            menu.stream()
+                .collect(
+                    ArrayList::new,
+                    List::add,
+                    List::addAll
+                );
+
+        assertEquals(9, dishes.size());
+    }
+
+    @Test
+    public void test_perf_prime_collector() {
+        System.out.println("using PrimeNumberCollector: " + testPerformance(() -> {
+            PrimeNumber.partitionPrimesUsingCollector(1000000);
+        }));
+
+        System.out.println("without PrimeNumberCollector: " + testPerformance(() -> {
+            PrimeNumber.partitionPrimes(1000000);
+        }));
+    }
+
+    public long testPerformance(Runnable callback) {
+        long fastest = Long.MAX_VALUE;
+
+        for (int i = 0; i < 5; i++) {
+            long start = System.nanoTime();
+
+            callback.run();
+
+            long duration = (System.nanoTime() - start) / 1000000; /* ms */
+
+            if (duration < fastest) fastest = duration;
+        }
+
+        return fastest;
     }
 
 }
