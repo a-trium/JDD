@@ -94,16 +94,14 @@ inner();
 ```
 
 - `함수는 일급객체`. 함수를 `다른함수의 인자`로 넘길 수 있고 `return으로 함수를 통째로 받을 수 있기에` 위 코드가 가능.
-- innerFunc의 실행컨텍스트 : innerFunc변수객체 - outerFunc변수객체 - 전역객체
-- `outerFunc실행컨텍스트가 끝났지만 outerFunc변수객체는 여전히 남아있고 innerFunc의 스코프 체인으로 참조되고 있음`
-- 때문에 `가비지 컬렉션의 대상이 되지 않고`, `접근 가능하게 살아있음`
-- 이게 바로 `클로저`의 개념!
-- `클로저` : `이미 생명주기가 끝난 외부 함수의 변수를 참조하는 함수`. closure의 의미는 함수가 자유변수에 대해 닫혀있다는 의미.
+- innerFunc는 outerFunc()의 실행이 끝난 후 실행됨
+- 반환되는 함수 innerFunc가 외부함수(outerFunc)의 지역변수 x에 접근하고 있음
+- `outerFunc실행컨텍스트가 끝났지만 outerFunc변수객체는 여전히 남아있고 innerFunc의 스코프 체인으로 참조되고 있는 것`
+- `클로저` : `이미 생명주기가 끝난 외부 함수의 변수를 참조하는 함수`. 
 - outerFunc에서 선언한 x를 참조하는 `innerFunc가 클로저`!
-- `자유변수` : `클로저로 참조되는 외부변수`, 여기서는 `outerFunc의 x`와 같은 변수
+- 이때 `클로저로 참조되는 외부변수`, 여기서는 `outerFunc의 x`와 같은 변수를 `자유변수`라고 한다
 - 지역 변수에 접근하려면, 함수가 종료되어 외부함수의 컨텍스트가 반환되더라도 변수 객체는 반환되는 내부함수의 스코프 체인에 그대로 남아있어야 접근 가능
-- 클로저는 자바스크립트에만 있는 개념이 아니라 여러언어에서 차용되는 개념임
-- 함수를 일급객체로 취급하는언어(함수형언어)에서 주로 사용
+- 클로저는 자바스크립트에만 있는 개념이 아니라 `함수를 일급객체로 취급하는 여러언어(함수형언어)`에서 주로 사용
 - 클로저를 사용한 코드가 그렇지 않은 코드보다 메모리 부담이 높음
 - 하지만 클로저를 쓰지 않는 것은 자바스크립트의 강력한 기능 하나를 무시하는 것
 
@@ -130,7 +128,7 @@ objHello.call();
 - func프로퍼티로 참조되는 함수를 call()함수로 호출
 - func프로퍼티에 자신이 정의한 함수를 참조시켜 호출
 - userFunc()함수를 정의하여 HelloFunc.func()에 참조시킨 뒤 HelloFunc()의 지역변수인 greeting을 화면에 출력
-
+- 아래의 코드는 `사용자가 원하는 인자를 더 넣어서 HelloFunc를 이용하여 호출`하는 코드
 ```javascript
 function saySomething(obj, methodName, name){
 	return (function(greeting){
@@ -149,8 +147,12 @@ obj1.call();
 ```
 
 //결과 : hello rang
-- 정해진 형식의 함수를 콜백해주는 라이브러리가 있을 경우, 사용자 정의 함수를 호출할 때 유용하게 사용됨
-- 예 )브라우저의 onclick, onmouserover과 같은 이벤트 핸들러의 형식은 function(event) {}인데, event 외에 원하는 인자를 더 추가한이벤트 헨들러를 사용하고 싶을 경우 클로저를 활용!
+- 새로운 함수 newObj()는 HelloFunc()의 객체를 좀 더 자유롭게 활용하려고 정의한 함수
+- obj는 HelloFunc()의 객체가 되고, name은 출력을 원하는 이름
+- newObj는 obj의 func프로퍼티에 saySomething()에서 반환되는 함수를 참조하고 반환
+- 결국 `obj1은 인자로 넘긴 objHello객체에서 func프로퍼티에 참조된 함수만 바뀐 객체`가 됨
+- 이 예제는 정해진 형식의 함수를 콜백해주는 라이브러리가 있을 경우, 이 `정해진 형식과는 다른 형식의 사용자 정의함수를 호출할 때` 유용하게 사용됨
+- 예 )브라우저의 onclick, onmouserover과 같은 이벤트 핸들러의 형식은 function(event) {}인데, event 외에 `원하는 인자를 더 추가한 이벤트 헨들러를 사용하고 싶을 경우` 클로저를 활용!
 
 ##5.4.2.2 함수의 캡슐화
 "I am XXX. I live in XXX. I'am XX years old"라는 문장 출력시, XX부분은 사용자에게 인자로 입력받아 값을 출력하는 경우
@@ -177,10 +179,10 @@ function getCompletedStr(name, city, age) {
 var str = getCompletedStr('jarang', 'seoul', 27);
 console.log(str);// I am jarang. I live in seoul.I'am 27 years old.
 ```
+- 위 방식 : 앞 문장 템플릿을 전역 변수(buffAr)에 저장하고, 사용자의 입력을 받은 후, 이 전역 변수에 접근하여 완성된 문장을 출력하는 방식
+- 단점 : buffAr이라는 배열은 전역변수로 `외부에 노출`되어있음
+- 해결 : `클로저`를 활용해 `buffAr을 스코프에 넣고 사용`하기
 
-- 단점 : buffAr이라는 배열은 전역변수로 외부에 노출되어있음
-- 해결 : 클로저를 활용해 buffAr을 스코프에 넣고 사용하기
-- 
 ```javascript
 var getCompletedStr = (function(name, city, age){
 	var buffAr = [
@@ -206,14 +208,15 @@ var str = getCompletedStr('jarang', 'seoul', 27);
 console.log(str);//결과값이 이상합니다 ㅠ_ㅠ..
 ```
 
-- getCompletedStr에 익명의 함수를 즉시실행시켜 반환되는 함수를 할당
-- 이 반환되는 함수가 클로저가 되고, 클로저는 자유변수 buffAr을 스코프 체인에서 참조
+- getCompletedStr에 `익명의 함수를 즉시실행시켜 반환되는 함수`를 할당
+- 이 `반환되는 함수`가 `클로저`가 되고, `클로저는 자유변수 buffAr을 스코프 체인에서 참조`
 
 ##5.4.2.3 setTimeout()에 지정되는 함수의 사용자 정의
-- setTimeout함수는 웹브라우저에서 제공하는 함수
+- `setTimeout함수`는 웹브라우저에서 제공하는 함수
 - 첫번째로 넘겨지는 함수 실행의 스케쥴링을 할 수 있음
 - 두번째 인자의 밀리초 단위 숫자 만큼의 시간 간격으로 해당 함수를 호출
-
+- setTimeout()으로 자신의 코드를 호출하고 싶으면 첫 번째 인자로 해당 함수 객체의 참조를 넘겨주면되지만, 실제 실행될 때 함수에 인자를 줄 수 없음
+- 자신이 정의한 함수에 인자를 줄 수 있게 하려면 아래와 같이 `'클로저'`를 활용한다.
 ```javascript
 function callLater(obj, a, b){
 	return (function(){
@@ -229,9 +232,10 @@ setTimeout(func, 500);
 ```
 
 - func에 callLater함수를 반환받아, setTimeout()함수의 첫번째 인자로 넣는다
+- `반환받는 함수는 클로저`이고, 사용자가 원하는 인자에 접근할 수 있다.
 
 ##5.4.3 클로저를 활용할 때 주의사항
-##5.4.3.1 클로저의 프로퍼티값이 쓰기 가능하므로 그 값이 여러번 호출로 항상 변할 수 있음
+##5.4.3.1 클로저의 `프로퍼티값이 쓰기 가능`하므로 그 값이 `여러번 호출로 항상 변할 수 있음`
 
 ```javascript
 function outerFunc(argNum){
@@ -245,8 +249,9 @@ var exam = outerFunc(40);
 exam(5);//45
 exam(-10);//35
 ```
+- exam을 호출할때마다 자유변수 num이 계속 변화함
 
-##5.4.3.2 하나의 클로저가 여러 함수 객체의 스코프 체인에 들어가 있는 경우
+##5.4.3.2 `하나의 클로저`가 `여러 함수 객체의 스코프 체인`에 들어가 있는 경우
 
 ```javascript
 function func(){
@@ -260,6 +265,8 @@ var exam = func();
 exam.func1();//2
 exam.func2();//-2
 ```
+- 두 함수 모두 자유 변수 x를 참조
+- 각각의 함수가 호출될 때마다 x의 값이 변화 
 
 ##5.4.3.3 루프 안에서 클로저를 활용할 때 주의하자
 
@@ -278,7 +285,7 @@ countSeconds(3);//4가 세번찍힘
 - 함수가 실행되는 시점은 countSeconds()함수의 실행이 종료된 이후
 - i값은 이미 4가 된 상태
 - setTimeout()로 실행되는 함수는 모두 4를 출력
-- 
+
 ```javascript
 function countSeconds(howMany){
 	for(var i = 1; i <= howMany; i++){
@@ -292,4 +299,4 @@ function countSeconds(howMany){
 countSeconds(3);//1,2,3이 순차적으로 찍힘
 ```
 
-- 실행함수를 실행시켜 루프 i값을 currentI에 복사해서 setTimeout()에 들어갈 함수에서 사용
+- 즉시 실행함수를 실행시켜 루프 i값을 currentI에 복사해서 setTimeout()에 들어갈 함수에서 사용하면 원하는 값 얻을 수 있음
