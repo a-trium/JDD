@@ -184,7 +184,7 @@ console.log(str);// I am jarang. I live in seoul.I'am 27 years old.
 - 해결 : `클로저`를 활용해 `buffAr을 스코프에 넣고 사용`하기
 
 ```javascript
-var getCompletedStr = (function(name, city, age){
+var getCompletedStr = (function(){
 	var buffAr = [
 		'I am ',
 		'',
