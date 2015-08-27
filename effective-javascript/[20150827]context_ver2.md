@@ -195,7 +195,7 @@ var getCompletedStr = (function(name, city, age){
 		' years old.'
 	];
 
-	return (function(){
+	return (function(name, city, age){
 		buffAr[1] = name;
 		buffAr[3] = city;
 		buffAr[5] = age;
@@ -205,7 +205,7 @@ var getCompletedStr = (function(name, city, age){
 })();
 
 var str = getCompletedStr('jarang', 'seoul', 27);
-console.log(str);//결과값이 이상합니다 ㅠ_ㅠ..
+console.log(str);//I am jarang. I live in seoul.I'am 27 years old.
 ```
 
 - getCompletedStr에 `익명의 함수를 즉시실행시켜 반환되는 함수`를 할당
