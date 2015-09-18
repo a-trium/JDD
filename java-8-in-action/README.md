@@ -10,5 +10,6 @@
 - [Chapter 6](https://github.com/SKP4/JDD/blob/master/java-8-in-action/1ambda/docs/Chapter6.md)
 - [Chapter 7 - Not yet](https://github.com/SKP7/JDD/blob/master/java-8-in-action/1ambda/docs/Chapter7.md)
 - [Chapter 9](https://github.com/SKP4/JDD/blob/master/java-8-in-action/1ambda/docs/Chapter9.md)
+- [Chapter 10](https://github.com/SKP4/JDD/blob/master/java-8-in-action/1ambda/docs/Chapter10.md)
 - [Chapter 11](https://github.com/SKP4/JDD/blob/master/java-8-in-action/1ambda/docs/Chapter11.md)
 
